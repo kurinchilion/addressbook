@@ -10,9 +10,11 @@ using Contact2015.Models.ViewModels;
 using Contact2015.Helpers;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using Contact2015.Filters;
 
 namespace Contact2015.Controllers
 {
+    [CheckSessionTimeout]
     public class ContactController : Controller
     {
         private Contacts2015Entities _dbContext = new Contacts2015Entities();
@@ -22,6 +24,7 @@ namespace Contact2015.Controllers
 
         #region Manage Contacts
         // MANAGE USERS
+
         public ActionResult Manage()
         {
             var _sessId = Int32.Parse(Session["_userId"].ToString());

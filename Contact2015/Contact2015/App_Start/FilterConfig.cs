@@ -9,7 +9,7 @@ namespace Contact2015
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            //  filters.Add(new SessionValidAttribute());
+            //filters.Add(new SessionValidAttribute());
         }
     }
 }

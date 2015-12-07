@@ -13,6 +13,7 @@ using Contact2015.Helpers;
 using System.Web.Configuration;
 using System.Text;
 using System.Security.Cryptography;
+using Contact2015.Filters;
 
 namespace Contact2015.Controllers
 {
@@ -145,7 +146,7 @@ namespace Contact2015.Controllers
 
                         try
                         {
-                           // MailHelper.SendMail(emailData);
+                            MailHelper.SendMail(emailData);
                             ViewBag.Success = 1; // 0 - Error
                             ViewBag.MessageTitle = "Forgot Password";
                             ViewBag.Message = "Please check your email.";
@@ -272,7 +273,7 @@ namespace Contact2015.Controllers
 
         }
 
-
+        [CheckSessionTimeout]
         public ActionResult MyProfile() 
         {
             var _sessId = Int32.Parse(Session["_userId"].ToString());
@@ -410,6 +411,7 @@ namespace Contact2015.Controllers
 
         #region Manage Users
         // MANAGE USERS
+        [CheckSessionTimeout]
         public ActionResult Manage()  
         {
 
@@ -584,6 +586,7 @@ namespace Contact2015.Controllers
 
         // EDIT Users now accepting values via query string for editing user input
         // GET: /User/Edit/5
+        [CheckSessionTimeout]
         public ActionResult Edit(int id = 0)
         {
             try
@@ -718,7 +721,7 @@ namespace Contact2015.Controllers
 
         //
         // GET: /User/Delete/5
-
+        [CheckSessionTimeout]
         public ActionResult Delete(int id = 0)
         {
             try
